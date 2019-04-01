@@ -32,17 +32,14 @@ let list;
        that will be passed into the parens later when you call or
        "invoke" the function
 ***/
-for (i = 0; i < studentList.length; i++) {
-  studentList[i].style.display = "none";
-}
+
 const showPage = (list, page) => {
   const firstItem = 10 * page - 10;
   const lastItem = 10 * page - 1;
-  for (i = 0; i < list; i++) {
-    if (firstItem <= list[i] && list[i] <= lastItem) {
-      for (i = firstItem; firstItem <= i <= lastItem; i++) {
-        list[i].style.display = "inline";
-      }
+  for (i = firstItem; firstItem <= i <= lastItem; i++) {
+    list[i].style.display = "block";
+    if (list !== list[i]) {
+      list.style.display = "none";
     }
   }
 };
