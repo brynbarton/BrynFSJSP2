@@ -15,8 +15,7 @@ FSJS project 2 - List Filter and Pagination
    will only be used inside of a function, then it can be locally
    scoped to that function.
 ***/
-const studentList = document.getElementsByClassName("student-item cf");
-let list;
+const list = document.getElementsByClassName("student-item cf");
 
 /***
    Create the `showPage` function to hide all of the items in the
@@ -36,12 +35,6 @@ let list;
 const showPage = (list, page) => {
   const firstItem = 10 * page - 10;
   const lastItem = 10 * page - 1;
-  for (i = firstItem; firstItem <= i <= lastItem; i++) {
-    list[i].style.display = "block";
-    if (list !== list[i]) {
-      list.style.display = "none";
-    }
-  }
 };
 
 /*
