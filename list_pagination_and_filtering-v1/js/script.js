@@ -1,70 +1,45 @@
 
-const studentList = document.getElementsByClassName("student-item cf");
+//Global variables
+const list = document.getElementsByClassName("student-item cf");
+const pages = document.querySelectorAll('a');
 
 // Making it to where we can call this function so that only 10 students display for each page
-const showPage = (list, page) => {;
+const showPage = (list, page) => {
   const firstItem = 10 * page - 10;
   const lastItem = 10 * page - 1;
-  for (let i = 0; i < studentList.length; i++) {
-    studentList[i].style.display = 'none';
+  for (let i = 0; i < list.length; i++) {
+    list[i].style.display = 'none';
     if (i >= firstItem && i <= lastItem) {
-      studentList[i].style.display = '';
+      list[i].style.display = '';
     }
   }
 };
 
-// Making a list div for the links
+// Creating the different divs and the ul for the pagination.
 const appendPageLinks = (list) => {
-  const paginationDiv = document.querySelector('.pagination')
-  const pageDiv = document.querySelector('.page');
-  pageDiv.appendChild(paginationDiv);
-  const pageUl = document.querySelector('.paginationUl');
-  paginationDiv.appendChild(pageUl);
-
+  const paginationDiv = document.createElement('div')
+  paginationDiv.classList.add('pagination');
+  const pageDiv = document.createElement('div');
+  pageDiv.classList.add('page');
+  pageDiv.appendChild(paginationDiv); //Making pageDiv the parent function of paginationDiv
+  const pageUl = document.createElement('ul');
+  paginationDiv.appendChild(pageUl); // making paginationDiv the parent function of pageUl
+}
   // function to remove active status from unclicked links
-  function removeActive() {const pageLinks = document.getElementsByClassName('pages');
-  for (let i = 0; i < pageLinks.length; i++) {
-  pageLinks[i].classList.remove('active');
+  function removeActive() {
+  for (let i = 0; i < pages.length; i++) {
+  pages[i].classList.remove('active');
   }};
 
-  //Functions to display the correct page when the links are clicked
-  const pageOne = document.querySelector('.page1');
-  pageOne.addEventListener('click', () => {
-    showPage(10,1);
-    removeActive();
-    pageOne.classList.add('active')
-  });
-  const pageTwo = document.querySelector('.page2');
-  pageTwo.addEventListener('click', () => {
-    showPage(10,2);
-    removeActive();
-    pageTwo.classList.add('active')
-  });
-  const pageThree = document.querySelector('.page3');
-  pageThree.addEventListener('click', () => {
-    showPage(10,3);
-    removeActive();
-    pageThree.classList.add('active')
-  });
-  const pageFour = document.querySelector('.page4');
-  pageFour.addEventListener('click', () => {
-    showPage(10,4);
-    removeActive();
-    pageFour.classList.add('active')
-  });
-  const pageFive = document.querySelector('.page5');
-  pageFive.addEventListener('click', () => {
-    showPage(10,5);
-    removeActive();
-    pageFive.classList.add('active')
-  });
-  const pageSix = document.querySelector('.page6');
-  pageSix.addEventListener('click', () => {
-    showPage(10,6);
-    removeActive();
-    pageSix.classList.add('active')
-  });
-}
+  //loop to display the correct pages when links are clicked
+for (let i = 0; i < pages.length; i++) {
+    pages[i].addEventListener('click', (e) => {
+      let pagesSelect = e.target.textContent;
+      showPage(list, pagesSelect)
+      removeActive(); //remove active status from all links
+      pages[i].classList.add('active'); // add active status to clicked link
+      })
+    };
 
 appendPageLinks();
-showPage(10,1);
+showPage(list,1); //to show first page on load
