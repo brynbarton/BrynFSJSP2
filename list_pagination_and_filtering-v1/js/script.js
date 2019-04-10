@@ -14,9 +14,9 @@ const showPage = (list, page) => {
   }
 };
 
-// Creating the different divs and the ul for the pagination.
 const appendPageLinks = (list) => {
 
+  // Creating the different divs and the ul for the pagination.
   const paginationDiv = document.createElement('div');
   paginationDiv.classList.add('pagination');
   const pageDiv = document.querySelector('.page');
@@ -24,31 +24,28 @@ const appendPageLinks = (list) => {
   const pageUl = document.createElement('ul');
   paginationDiv.appendChild(pageUl);
 
+  //creating the list of links to pages
   for (let i = 1; i <= totalPages; i++) { // totalPages does NOT have .length since it is already a number
     const pageLi = document.createElement('li');
     const aTag = document.createElement('a');
     pageUl.appendChild(pageLi);
     pageLi.appendChild(aTag);
-    aTag.textContent = i;
+    aTag.textContent = i; //makes the links text content the appropriate number
   }
 
-  const allTags = document.querySelectorAll('a');
+  const allATags = document.querySelectorAll('a'); //grab all the a tags
   for (let i = 0; i < totalPages; i++) {
-    allTags[i].addEventListener('click', (e) => {
+    allATags[i].addEventListener('click', (e) => { //create an event listener for all the a tags
       let pageLink = e.target.textContent;
-      showPage(studentList, pageLink);
+      showPage(studentList, pageLink); // shows the appropriate page for that link
 
-      for (let i = 0; i < allTags.length; i++) {
-        allTags[i].classList.remove('active');
+      for (let i = 0; i < allATags.length; i++) { //
+        allATags[i].classList.remove('active'); // removing the 'active' class from all a tags
       }
-      e.target.classList.add('active');
+      e.target.classList.add('active'); // adding the active class to the link thats just been clicked.
     });
   }
-
-
-
 }
-
 
 appendPageLinks();
 showPage(studentList,1); //to show first page on load
