@@ -2,6 +2,22 @@
 //Global variables
 const studentList = document.getElementsByClassName("student-item cf");
 const totalPages = Math.ceil(studentList.length / 10); // Total pages = total students divided by 10, rounded up
+const h2 = document.querySelector("h2");
+
+//Dynamically adding search function
+
+const searchDiv = document.createElement('div');
+searchDiv.classList.add('student-search');
+h2.parentNode.insertBefore(searchDiv, h2.nextSibling);
+const searchInput = document.createElement('input');
+searchInput.setAttribute('type', 'text');
+searchInput.placeholder = 'Search for students...';
+const searchButton = document.createElement('BUTTON');
+searchDiv.appendChild(searchButton);
+searchButton.innerHTML = 'Search';
+searchDiv.appendChild(searchInput);
+
+
 // Making it to where we can call this function so that only 10 students display for each page
 const showPage = (list, page) => {
   const firstItem = 10 * page - 10;
@@ -14,7 +30,9 @@ const showPage = (list, page) => {
   }
 };
 
-const appendPageLinks = (list) => {
+
+
+const appendPageLinks = () => {
 
   // Creating the different divs and the ul for the pagination.
   const paginationDiv = document.createElement('div');
@@ -34,6 +52,7 @@ const appendPageLinks = (list) => {
   }
 
   const allATags = document.querySelectorAll('a'); //grab all the a tags
+  allATags[0].classList.add('active');
   for (let i = 0; i < totalPages; i++) {
     allATags[i].addEventListener('click', (e) => { //create an event listener for all the a tags
       let pageLink = e.target.textContent;
@@ -47,5 +66,31 @@ const appendPageLinks = (list) => {
   }
 }
 
+// Adding functionality to search function
+
+searchButton.addEventListener ('click', () => {
+  const filter = searchInput.value.toUpperCase();
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (let i = 0; i < studentList.length; i++) {
+    let h3 = studentList[i].getElementsByTagName("h3")[0];
+    const txtValue = h3.textContent || h3.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      studentList[i].style.display = "";
+    } else {
+      studentList[i].style.display = "none";
+    }
+  }
+});
+
 appendPageLinks();
 showPage(studentList,1); //to show first page on load
+
+/*const h3 = document.getElementsByTagName("h3");
+let txtValue = h3.textContent || h3.innerText;
+if (txtValue.toUpperCase().indexOf(filter) > -1) {
+    studentList[i].style.display = "";
+  } else {
+    studentList[i].style.display = "none";
+  }
+  */
