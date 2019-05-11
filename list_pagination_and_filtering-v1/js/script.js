@@ -83,6 +83,8 @@ searchButton.addEventListener ('click', () => {
   }
 });
 
+
+searchFunction();
 appendPageLinks();
 showPage(studentList,1); //to show first page on load
 
