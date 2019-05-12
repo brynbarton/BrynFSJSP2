@@ -1,4 +1,3 @@
-
 //Global variables
 const studentList = document.getElementsByClassName("student-item cf");
 const totalPages = Math.ceil(studentList.length / 10); // Total pages = total students divided by 10, rounded up
@@ -68,31 +67,33 @@ const appendPageLinks = () => {
 
 // Adding functionality to search function
 
-searchButton.addEventListener ('click', () => {
-  const filter = searchInput.value.toUpperCase();
-
-  // Loop through all list items, and hide those who don't match the search query
+function searchList() {
+  const sFilter = searchInput.value.toUpperCase();
   for (let i = 0; i < studentList.length; i++) {
-    let h3 = studentList[i].getElementsByTagName("h3")[0];
-    const txtValue = h3.textContent || h3.innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      studentList[i].style.display = "";
+    let a = studentList[i];
+    if (a.innerHTML.toUpperCase().indexOf(sFilter) > -1) {
+      studentList[i].style.display = '';
     } else {
-      studentList[i].style.display = "none";
+      studentList[i].style.display = 'none';
     }
   }
+}
+
+searchButton.addEventListener('click', function(e) {
+  searchList();
 });
 
+/** searchDiv.addEventListener('keyup', function(e) {
+  const term = e.target.value.toLowerCase();
+  Array.from(studentList).forEach(function(name){
+    const studentName = name.firstElementChild.textContent
+    if (studentName.toLowerCase().indexOf(term) != -1) {
+      name.style.display = 'block';
+    } else {
+      name.style.display = 'none';
+    }
+  })
+});**/
 
-searchFunction();
 appendPageLinks();
 showPage(studentList,1); //to show first page on load
-
-/*const h3 = document.getElementsByTagName("h3");
-let txtValue = h3.textContent || h3.innerText;
-if (txtValue.toUpperCase().indexOf(filter) > -1) {
-    studentList[i].style.display = "";
-  } else {
-    studentList[i].style.display = "none";
-  }
-  */
