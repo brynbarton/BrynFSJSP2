@@ -21,10 +21,10 @@ searchDiv.appendChild(searchInput);
 const showPage = (list, page) => {
   const firstItem = 10 * page - 10;
   const lastItem = 10 * page - 1;
-  for (let i = 0; i < studentList.length; i++) {
-    studentList[i].style.display = 'none';
+  for (let i = 0; i < list.length; i++) {
+    list[i].style.display = 'none';
     if (i >= firstItem && i <= lastItem) {
-      studentList[i].style.display = '';
+      list[i].style.display = '';
     }
   }
 };
@@ -67,16 +67,20 @@ const appendPageLinks = () => {
 
 // Adding functionality to search function
 
+let filterResults = [];
+const studentsName = document.querySelectorAll('h3');
 function searchList() {
   const sFilter = searchInput.value.toUpperCase();
   for (let i = 0; i < studentList.length; i++) {
-    let a = studentList[i];
+    let a = studentsName[i];
     if (a.innerHTML.toUpperCase().indexOf(sFilter) > -1) {
       studentList[i].style.display = '';
+      filterResults.push(studentList[i]);
     } else {
       studentList[i].style.display = 'none';
     }
   }
+  showPage(filterResults, totalPages);
 }
 
 searchButton.addEventListener('click', function(e) {
