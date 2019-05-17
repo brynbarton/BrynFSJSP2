@@ -30,7 +30,6 @@ const showPage = (list, page) => {
 };
 
 
-
 const appendPageLinks = () => {
 
   // Creating the different divs and the ul for the pagination.
