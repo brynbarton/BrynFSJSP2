@@ -30,6 +30,8 @@ const showPage = (list, page) => {
 };
 
 
+
+
 const appendPageLinks = () => {
 
   // Creating the different divs and the ul for the pagination.
@@ -79,7 +81,7 @@ function searchList() {
       studentList[i].style.display = 'none';
     }
   }
-  showPage(filterResults, totalPages);
+  showPage(filterResults, 1);
 }
 
 searchButton.addEventListener('click', function(e) {
