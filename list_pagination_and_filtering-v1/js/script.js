@@ -103,5 +103,5 @@ searchButton.addEventListener("click", function(e) {
   })
 });**/
 
-appendPageLinks();
+appendPageLinks(studentList);
 showPage(studentList, 1); //to show first page on load
