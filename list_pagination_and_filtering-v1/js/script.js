@@ -77,14 +77,13 @@ function searchList() {
   const sFilter = searchInput.value.toUpperCase();
   for (let i = 0; i < studentList.length; i++) {
     let a = studentsName[i];
+    studentList[i].style.display = "none";
     if (a.innerHTML.toUpperCase().indexOf(sFilter) > -1) {
-      studentList[i].style.display = "";
       filterResults.push(studentList[i]);
-    } else {
-      studentList[i].style.display = "none";
     }
   }
   showPage(filterResults, 1);
+  appendPageLinks(filterResults);
 }
 
 searchButton.addEventListener("click", function(e) {
