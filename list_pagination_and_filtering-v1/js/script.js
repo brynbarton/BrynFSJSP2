@@ -80,8 +80,7 @@ function searchList() {
     studentList[i].style.display = "none";
     if (a.innerHTML.toUpperCase().indexOf(sFilter) > -1) {
       filterResults.push(studentList[i]);
-      return;
-    } else {
+    } else if (a.innerHTML.toUpperCase().indexOf(sFilter) !== "isNaN") {
       alert("error");
       break;
     }
