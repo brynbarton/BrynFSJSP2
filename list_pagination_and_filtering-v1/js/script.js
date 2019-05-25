@@ -30,8 +30,8 @@ const showPage = (list, page) => {
 };
 
 const appendPageLinks = list => {
-  if (oldPagination > 0) {
-    oldPagination.parentNode.removeChild(oldPagination);
+  if (oldPagination[0]) {
+    oldPagination[0].parentNode.removeChild(oldPagination[0]);
   }
   // Creating the different divs and the ul for the pagination.
   let totalPages = Math.ceil(list.length / 10); // Total pages = total students divided by 10, rounded up
@@ -58,7 +58,7 @@ const appendPageLinks = list => {
     allATags[i].addEventListener("click", e => {
       //create an event listener for all the a tags
       let pageLink = e.target.textContent;
-      showPage(studentList, pageLink); // shows the appropriate page for that link
+      showPage(list, pageLink); // shows the appropriate page for that link
 
       for (let i = 0; i < allATags.length; i++) {
         //
@@ -80,6 +80,11 @@ function searchList() {
     studentList[i].style.display = "none";
     if (a.innerHTML.toUpperCase().indexOf(sFilter) > -1) {
       filterResults.push(studentList[i]);
+      return;
+    } else {
+      alert("Error: Please enter a letter");
+      return;
+      break;
     }
   }
   showPage(filterResults, 1);
