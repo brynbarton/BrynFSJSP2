@@ -21,7 +21,7 @@ searchDiv.appendChild(searchInput);
 
 const noResults = document.getElementsByClassName("student-list")[0];
 const nRtext = document.createElement("h3");
-nRtext.innerHTML = "Error";
+nRtext.innerHTML = "Error, no search results";
 noResults.appendChild(nRtext);
 
 // Making it to where we can call this function so that only 10 students display for each page
