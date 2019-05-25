@@ -82,8 +82,7 @@ function searchList() {
       filterResults.push(studentList[i]);
       return;
     } else {
-      alert("Error: Please enter a letter");
-      return;
+      alert("error");
       break;
     }
   }
