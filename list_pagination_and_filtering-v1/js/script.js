@@ -19,10 +19,12 @@ searchDiv.appendChild(searchInput);
 
 // If no results turned
 
-const noResults = document.getElementsByClassName("student-list")[0];
+const noResults = document.getElementsByClassName("page-header cf")[0];
 const nRtext = document.createElement("h3");
 nRtext.innerHTML = "Error, no search results";
 noResults.appendChild(nRtext);
+const h3 = document.querySelector("h3");
+h3.style.display = "none";
 
 // Making it to where we can call this function so that only 10 students display for each page
 const showPage = (list, page) => {
@@ -82,11 +84,13 @@ const studentsName = document.querySelectorAll("h3");
 function searchList() {
   let filterResults = [];
   const sFilter = searchInput.value.toUpperCase();
+  h3.style.display = "none";
   for (let i = 0; i < studentList.length; i++) {
     let a = studentsName[i];
     studentList[i].style.display = "none";
     if (a.innerHTML.toUpperCase().indexOf(sFilter) > -1) {
       filterResults.push(studentList[i]);
+      h3.style.display = "none";
     }
   }
   showPage(filterResults, 1);
