@@ -101,17 +101,5 @@ searchButton.addEventListener("click", function(e) {
   searchList();
 });
 
-/** searchDiv.addEventListener('keyup', function(e) {
-  const term = e.target.value.toLowerCase();
-  Array.from(studentList).forEach(function(name){
-    const studentName = name.firstElementChild.textContent
-    if (studentName.toLowerCase().indexOf(term) != -1) {
-      name.style.display = 'block';
-    } else {
-      name.style.display = 'none';
-    }
-  })
-});**/
-
 appendPageLinks(studentList);
 showPage(studentList, 1); //to show first page on load
