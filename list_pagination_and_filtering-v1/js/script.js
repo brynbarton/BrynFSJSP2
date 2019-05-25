@@ -17,6 +17,13 @@ searchDiv.appendChild(searchButton);
 searchButton.innerHTML = "Search";
 searchDiv.appendChild(searchInput);
 
+// If no results turned
+
+const noResults = document.getElementsByClassName("student-list")[0];
+const nRtext = document.createElement("h3");
+nRtext.innerHTML = "Error";
+noResults.appendChild(nRtext);
+
 // Making it to where we can call this function so that only 10 students display for each page
 const showPage = (list, page) => {
   const firstItem = 10 * page - 10;
@@ -80,9 +87,6 @@ function searchList() {
     studentList[i].style.display = "none";
     if (a.innerHTML.toUpperCase().indexOf(sFilter) > -1) {
       filterResults.push(studentList[i]);
-    } else if (a.innerHTML.toUpperCase().indexOf(sFilter) !== "isNaN") {
-      alert("error");
-      break;
     }
   }
   showPage(filterResults, 1);
