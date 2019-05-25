@@ -17,7 +17,7 @@ searchDiv.appendChild(searchButton);
 searchButton.innerHTML = "Search";
 searchDiv.appendChild(searchInput);
 
-// If no results turned
+// Set up for if no results are found in the search bar
 
 const noResults = document.getElementsByClassName("page-header cf")[0];
 const nRtext = document.createElement("h4");
@@ -88,6 +88,8 @@ function searchList() {
   for (let i = 0; i < studentList.length; i++) {
     let a = studentsName[i];
     studentList[i].style.display = "none";
+
+    // If no results are turned
     if (a.innerHTML.toUpperCase().indexOf(sFilter) > -1) {
       filterResults.push(studentList[i]);
       h4.style.display = "none";
@@ -96,7 +98,7 @@ function searchList() {
   showPage(filterResults, 1);
   appendPageLinks(filterResults);
 }
-
+// to run the searchList function on searchButton click
 searchButton.addEventListener("click", function(e) {
   searchList();
 });
