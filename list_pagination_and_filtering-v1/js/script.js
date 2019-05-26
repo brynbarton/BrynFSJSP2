@@ -28,6 +28,7 @@ const h4 = document.querySelector("h4");
 h4.style.display = "none";
 
 // Making it to where we can call this function so that only 10 students display for each page
+
 const showPage = (list, page) => {
   const firstItem = 10 * page - 10;
   const lastItem = 10 * page - 1;
