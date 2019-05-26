@@ -21,6 +21,7 @@ searchDiv.appendChild(searchInput);
 
 const noResults = document.getElementsByClassName("student-search")[0];
 const nRtext = document.createElement("h4");
+nRtext.classList.add("student-h4");
 nRtext.innerHTML = "Error, no search results, please try again!";
 noResults.appendChild(nRtext);
 const h4 = document.querySelector("h4");
