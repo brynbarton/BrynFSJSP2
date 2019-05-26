@@ -19,7 +19,7 @@ searchDiv.appendChild(searchInput);
 
 // Set up for if no results are found in the search bar
 
-const noResults = document.getElementsByClassName("page-header cf")[0];
+const noResults = document.getElementsByClassName("student-search")[0];
 const nRtext = document.createElement("h4");
 nRtext.innerHTML = "Error, no search results, please try again!";
 noResults.appendChild(nRtext);
@@ -62,7 +62,9 @@ const appendPageLinks = list => {
   }
 
   const allATags = document.querySelectorAll("a"); //grab all the a tags
-  allATags[0].classList.add("active");
+  if (allATags > 0) {
+    allATags[0].classList.add("active");
+  }
   for (let i = 0; i < totalPages; i++) {
     allATags[i].addEventListener("click", e => {
       //create an event listener for all the a tags
@@ -97,6 +99,7 @@ function searchList() {
   }
   showPage(filterResults, 1);
   appendPageLinks(filterResults);
+  return;
 }
 // to run the searchList function on searchButton click
 searchButton.addEventListener("click", function(e) {
